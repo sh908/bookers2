@@ -1,0 +1,24 @@
+ <%= flash.now[:danger] %>
+ <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+ <h1>Editing Book</h1>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>
+  <h4 style="color:red">
+      errors prohibited this obj from being saved:
+  </h4>
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<%= form_with model:@book, local: true do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'Update Book', class: "btn btn-success" %>
+
+  <%= link_to "Show", book_path(@book) %>
+  <%= link_to "Back", books_path %>
+<% end %>
+</div
